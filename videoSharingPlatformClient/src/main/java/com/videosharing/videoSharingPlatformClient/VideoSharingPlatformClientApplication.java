@@ -1,4 +1,4 @@
-package com.videoSharingPlatformClient.videoSharingPlatformClient;
+package com.videosharing.videoSharingPlatformClient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
