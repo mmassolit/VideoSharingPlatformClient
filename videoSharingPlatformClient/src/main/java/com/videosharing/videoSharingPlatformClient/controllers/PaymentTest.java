@@ -20,14 +20,14 @@ public class PaymentTest {
         for (int i=0; i< num; i++){
             Request post = Request.builder()
                     .type(new HttpPost(endPoint))
-                    .body(new PaymentPayload(userTest.getRandomUser(), userTest.getRandomUser(),  FData.getBalance()))
+                    .body(new PaymentPayload(userTest.getRandomUser().getId(), userTest.getRandomUser().getId(),  FData.getBalance()))
                     .response(Payment.class).build();
             Logging.printObject(post.send(), "Creating Payment");
         }
     }
 
-    public void testService() throws IOException{
+    public void testService(int num) throws IOException{
         System.out.println("Payment service testing".toUpperCase());
-        createPayments(1);
+        createPayments(num);
     }
 }

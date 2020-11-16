@@ -2,6 +2,7 @@ package com.videosharing.videoSharingPlatformClient.requests;
 
 import lombok.Builder;
 import com.google.gson.Gson;
+import com.videosharing.videoSharingPlatformClient.payloads.ErrorPayload;
 import com.videosharing.videoSharingPlatformClient.utils.Logging;
 
 import org.apache.http.HttpEntity;

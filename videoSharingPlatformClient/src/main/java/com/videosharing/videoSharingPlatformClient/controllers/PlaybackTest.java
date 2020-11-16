@@ -20,14 +20,15 @@ public class PlaybackTest {
         for (int i=0; i< num; i++){
             Request post = Request.builder()
                     .type(new HttpPost(endPoint))
-                    .body(new PlaybackPayload(userTest.getRandomUser(), videoTest.getRandomVideo(),  adTest.getRandomAd()))
+                    .body(new PlaybackPayload(userTest.getRandomUser().getId(), videoTest.getRandomVideo().getId(),
+                    		adTest.getRandomAd().getId()))
                     .response(Playback.class).build();
             Logging.printObject(post.send(), "Creating Playback");
         }
     }
 
-    public void testService() throws IOException{
+    public void testService(int num) throws IOException{
         System.out.println("Playback service testing".toUpperCase());
-        createPlaybacks(1);
+        createPlaybacks(num);
     }
 }

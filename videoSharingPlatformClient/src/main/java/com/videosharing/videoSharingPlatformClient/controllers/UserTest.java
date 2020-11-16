@@ -3,7 +3,6 @@ package com.videosharing.videoSharingPlatformClient.controllers;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 
-import com.videosharing.videoSharingPlatformClient.models.Ad;
 import com.videosharing.videoSharingPlatformClient.models.User;
 import com.videosharing.videoSharingPlatformClient.payloads.UserPayload;
 import com.videosharing.videoSharingPlatformClient.requests.Request;
@@ -20,10 +19,10 @@ public class UserTest {
     private final RoleTest roleTest = new RoleTest();
     
     public void createUsers(int num) throws IOException {
-        for (int i=0; i< num; i++){
+        for (int i=0; i < num; i++){
             Request post = Request.builder()
                     .type(new HttpPost(endPoint))
-                    .body(new UserPayload(FData.getName(), FData.getPassword(), FData.getEmail(), roleTest.getRandomRole()))
+                    .body(new UserPayload(roleTest.getRandomRole().getId(), FData.getName(), FData.getPassword(), FData.getEmail()))
                     .response(User.class).build();
             Logging.printObject(post.send(), "Creating User");
         }
@@ -33,15 +32,15 @@ public class UserTest {
         Request get = Request.builder()
 		                .type(new HttpGet(endPoint))
 		                .body(null)
-		                .response(Ad[].class).build();
+		                .response(User[].class).build();
         User[] users = (User[]) get.send();
         
         return users[rand.nextInt(users.length)];
     }
 
 
-    public void testService() throws IOException{
+    public void testService(int num) throws IOException{
         System.out.println("User service testing".toUpperCase());
-        createUsers(1);
+        createUsers(num);
     }
 }

@@ -3,7 +3,6 @@ package com.videosharing.videoSharingPlatformClient.controllers;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 
-import com.videosharing.videoSharingPlatformClient.models.Ad;
 import com.videosharing.videoSharingPlatformClient.models.Role;
 import com.videosharing.videoSharingPlatformClient.payloads.RolePayload;
 import com.videosharing.videoSharingPlatformClient.requests.Request;
@@ -22,7 +21,7 @@ public class RoleTest {
         for (int i=0; i < num; i++){
             Request post = Request.builder()
                     .type(new HttpPost(endPoint))
-                    .body(new RolePayload(FData.getRole(), FData.getAllowed(), FData.getAllowed()))
+                    .body(new RolePayload(FData.getRole(), true, true))
                     .response(Role.class).build();
             Logging.printObject(post.send(), "Creating Role");
         }
@@ -32,15 +31,15 @@ public class RoleTest {
         Request get = Request.builder()
 		                .type(new HttpGet(endPoint))
 		                .body(null)
-		                .response(Ad[].class).build();
+		                .response(Role[].class).build();
         Role[] roles = (Role[]) get.send();
         
         return roles[rand.nextInt(roles.length)];
     }
 
 
-    public void testService() throws IOException{
+    public void testService(int num) throws IOException{
         System.out.println("Role service testing".toUpperCase());
-        createRoles(1);
+        createRoles(num);
     }
 }

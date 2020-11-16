@@ -1,7 +1,5 @@
 package com.videosharing.videoSharingPlatformClient.payloads;
 
-import com.videosharing.videoSharingPlatformClient.models.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -9,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class VideoPayload {
     private String name;
-    private User user;
+    private String user;
 }

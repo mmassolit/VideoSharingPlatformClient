@@ -35,7 +35,7 @@ public class FData {
     }
 
     public static double getCpm() {
-    	return rand.nextDouble() * 20;
+    	return rand.nextDouble() * 20.0;
     }
 
     public static double getBudget() {
@@ -44,9 +44,5 @@ public class FData {
 
     public static double getBalance() {
     	return rand.nextDouble() * 10000.0;
-    }
-    
-    public static boolean getAllowed() {
-    	return rand.nextBoolean();
     }
 }

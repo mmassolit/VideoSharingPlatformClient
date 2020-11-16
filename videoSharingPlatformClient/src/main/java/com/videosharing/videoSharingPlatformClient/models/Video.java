@@ -8,4 +8,5 @@ public class Video {
     private String dateCreated;
     private String name;
     private User user;
+    private int views;
 }

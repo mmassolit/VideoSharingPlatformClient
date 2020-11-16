@@ -5,7 +5,7 @@ import org.apache.http.client.methods.HttpPost;
 
 import com.videosharing.videoSharingPlatformClient.models.Ad;
 
-import com.videosharing.videoSharingPlatformClient.payloads.AdPayload;;
+import com.videosharing.videoSharingPlatformClient.payloads.AdPayload;
 import com.videosharing.videoSharingPlatformClient.requests.Request;
 import com.videosharing.videoSharingPlatformClient.utils.FData;
 import com.videosharing.videoSharingPlatformClient.utils.Logging;
@@ -23,7 +23,7 @@ public class AdTest {
         for (int i=0; i< num; i++){
             Request post = Request.builder()
                     .type(new HttpPost(endPoint))
-                    .body(new AdPayload(FData.getCpm(), FData.getBudget(), userTest.getRandomUser()))
+                    .body(new AdPayload(FData.getCpm(), FData.getBudget(), userTest.getRandomUser().getId()))
                     .response(Ad.class).build();
             Logging.printObject(post.send(), "Creating Ad");
         }
@@ -40,8 +40,8 @@ public class AdTest {
     }
 
 
-    public void testService() throws IOException{
+    public void testService(int num) throws IOException{
         System.out.println("Ad service testing".toUpperCase());
-        createAds(1);
+        createAds(num);
     }
 }
